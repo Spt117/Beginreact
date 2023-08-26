@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {{> head}}
+
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+
+  <body>
+    <div id="root"></div>
+  </body>
+
+  <script type="text/babel">
+    const Message = ({ children, author }) => {
+      return (
+        <p>
+          <b>{author}</b> : {children}
+        </p>
+      );
+    };
+
+    const button = <button id="start">Start</button>;
+
+    const elements = (
+      <div>
+        {button}
+        <Message author="Bill">Hello</Message>
+        <Message author="Melvynx">Coucou !</Message>
+        <h2>{Math.random()}</h2>
+        <p>{112 + 4}</p>
+        <span>{new Date().toDateString()}</span>
+      </div>
+    );
+
+    const root = ReactDOM.createRoot(document.querySelector('#root'));
+    root.render(elements);
+  </script>
+</html>

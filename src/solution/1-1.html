@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {{> head}}
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+
+  <script>
+    const helloDiv = document.createElement('div');
+    helloDiv.innerText = 'Hello 👋';
+
+    const root = document.querySelector('#root');
+    root.appendChild(helloDiv);
+  </script>
+</html>

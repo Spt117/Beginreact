@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {{> head}}
+  </head>
+  <body>
+    <!-- 🦁 crée une div avec l'id "root" -->
+    <div id="root"></div>
+    <!-- ℹ️ presque toutes les app React ont une "root".
+         C'est le premier nœud de notre arbre. -->
+  </body>
+
+  <script>
+    // 🦁 crée une div
+    const newDiv = document.createElement('div');
+
+    // 🦁 ajoute le text "Hello 👋" dedans
+    newDiv.innerText = 'Hello 👋';
+    // 🦁 récupère l'élément "root"
+    const root = document.getElementById('root');
+    // 🦁 ajoute la div dans l'élément "root"
+    root.appendChild(newDiv);
+
+    newDiv.addEventListener('click', () => {
+      alert('Tu as cliqué sur Hello 👋');
+    });
+
+    const Counter = (initialValue = 5) => {
+      const button = document.createElement('button');
+      button.innerText = initialValue;
+      button.addEventListener('click', () => {
+        button.innerText = parseInt(button.innerText) + 1;
+      });
+      return button;
+    };
+
+    const counter = Counter();
+
+    root.appendChild(counter);
+
+    const counter2 = Counter(10);
+
+    root.appendChild(counter2);
+
+    const fruits = ['banana', 'apple', 'strawberry'];
+
+    const list = document.createElement('ul');
+    for (let i = 0; i < fruits.length; i++) {
+      const fruit = fruits[i];
+      const item = document.createElement('li');
+      item.innerText = fruit;
+      list.appendChild(item);
+    }
+    root.appendChild(list);
+  </script>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {{> head}}
+
+    <!-- ℹ️ Les scripts React pour qu'on puisse utiliser React.createElement -->
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+
+  <script>
+    // 🦁 Crée un button avec comme id "start" et comme text à l'intérieur "Start !"
+    // 🦁 Ajoute une événement "onClick" à notre button qui affiche une alert.
+
+    // 🦁 Crée une div : "elements" avec à l'intérieur le bouton.
+
+    const container = document.querySelector('#root');
+    const root = ReactDOM.createRoot(container); // 🦁 Remplace `undefined` by `ReactDOM.createRoot(container);`
+    // 🦁 Utilise `root.render` pour afficher la div "elements"
+  </script>
+</html>

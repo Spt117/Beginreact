@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {{> head}}
+
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+
+  <script>
+    const startButton = React.createElement(
+      'button',
+      {
+        id: 'start',
+        onClick: () => {
+          alert('Le bouton start à été cliqué !');
+        },
+      },
+      'Start'
+    );
+
+    const element = React.createElement('div', null, startButton);
+
+    const container = document.querySelector('#root');
+    const root = ReactDOM.createRoot(container);
+    root.render(element);
+  </script>
+</html>
