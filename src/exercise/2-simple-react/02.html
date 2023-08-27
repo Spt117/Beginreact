@@ -2,7 +2,11 @@
 <html lang="en">
   <head>
     {{> head}}
-
+    <style>
+      li {
+        list-style-type: none;
+      }
+    </style>
     <!-- ℹ️ Les scripts React pour qu'on puisse utiliser React.createElement -->
     <script
       crossorigin
@@ -18,13 +22,38 @@
   </body>
 
   <script>
-    // 🦁 Crée un button avec comme id "start" et comme text à l'intérieur "Start !"
-    // 🦁 Ajoute une événement "onClick" à notre button qui affiche une alert.
+    const button = React.createElement(
+      'button',
+      { id: 'start', onClick: () => alert('Hello World !') },
+      'Start !'
+    );
+    const fruits = ['pomme', 'poire', 'fraise', 'cerise'];
 
-    // 🦁 Crée une div : "elements" avec à l'intérieur le bouton.
+    const fruitsList = React.createElement(
+      'ul',
+      null,
+      fruits.map((fruit) => React.createElement('li', null, fruit))
+    );
+
+    const newDiv = React.createElement(
+      'div',
+      null,
+      button,
+      React.createElement('button', null, 'Stop !'),
+      fruitsList
+    );
+
+    const elements = React.createElement(
+      'div',
+      null,
+      React.createElement('h1', null, 'Lancer la partie!'),
+      newDiv
+    );
 
     const container = document.querySelector('#root');
-    const root = ReactDOM.createRoot(container); // 🦁 Remplace `undefined` by `ReactDOM.createRoot(container);`
-    // 🦁 Utilise `root.render` pour afficher la div "elements"
+
+    const root = ReactDOM.createRoot(container);
+
+    root.render(elements);
   </script>
 </html>
