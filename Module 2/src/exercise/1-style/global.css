@@ -1,0 +1,6 @@
+.button {
+  background-color: var(--background-color);
+  padding: var(--padding);
+  font-size: var(--font-size);
+  /* default styles... */
+}
