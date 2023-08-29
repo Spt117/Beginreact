@@ -1,5 +1,5 @@
 .button {
-  background-color: var(--background-color);
+  background-color: red;
   padding: var(--padding);
   font-size: var(--font-size);
   /* default styles... */
