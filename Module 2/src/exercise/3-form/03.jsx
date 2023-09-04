@@ -1,23 +1,28 @@
-const UserForm = ({ onSubmitUser }) => {
-  // 🦁 Crée une fonction handleSubmit qui prend `event` en paramètre.
-  // Récupère ensuite les deux données du formulaire (name et password)
-  // Pour ça tu peux t'aider en loggant dans la console `event.currentTarget` et en cherchant les propriétés name et password.
-  // 💡 Tu peux utiliser `event.currentTarget.elements` pour récupérer les éléments du formulaire.
+import { useRef } from 'react';
 
-  // 🦁 Appelle la fonction `onSubmitUser` avec les deux données du formulaire dans un object
-  // 💡 onSubmitUser({ name, password })
-  // 💡 Ajoute event.preventDefault() pour éviter que la page ne se recharge
+const UserForm = ({ onSubmitUser }) => {
+  const usernameRef = useRef(null);
+  const passwordRef = useRef(null);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const form = event.currentTarget;
+    const username = form.name.value;
+    const password = form.password.value;
+
+    onSubmitUser({ username, password });
+  };
 
   return (
-    // 🦁 ajoute onSubmit en passant la fonction handleSubmit
-    <form className="vertical-stack form">
+    <form className="vertical-stack form" onSubmit={handleSubmit}>
       <label>
         Name
-        <input type="text" name="name" />
+        <input type="text" name="name" ref={usernameRef} />
       </label>
       <label>
         Password
-        <input type="password" name="password" />
+        <input type="password" name="password" ref={passwordRef} />
       </label>
       <input type="submit" value="Submit" />
     </form>
@@ -26,7 +31,7 @@ const UserForm = ({ onSubmitUser }) => {
 
 const Form = () => {
   const onSubmitUser = (data) => {
-    alert('Form submitted: ' + JSON.stringify(data));
+    console.log('Form submitted: ' + JSON.stringify(data));
   };
   return <UserForm onSubmitUser={onSubmitUser} />;
 };
